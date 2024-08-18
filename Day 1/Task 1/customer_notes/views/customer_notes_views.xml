@@ -1,80 +1,111 @@
 <odoo>
-    <!-- Form view for Customer Records -->
-    <record id="customer_records_form_view" model="ir.ui.view">
-        <field name="name">customer.records.form.view</field>
-        <field name="model">customer.records</field>
-        <field name="arch" type="xml">
-            <form string="Customer Records">
-                <sheet>
-                    <group>
-                        <!-- Field to display the customer name -->
-                        <field name="name" string="Customer Name"/>
-                    </group>
-                    <notebook>
-                        <page string="Notes">
-                            <!-- Embedding the customer notes field with tree and form views -->
-                            <field name="notes">
-                                <tree string="Customer Notes">
-                                    <!-- Fields to display in the tree view of notes -->
-                                    <field name="title"/>
-                                    <field name="note"/>
-                                </tree>
-                                <form string="Customer Notes">
-                                    <group>
-                                        <!-- Fields to display in the form view of notes -->
+    <data>
+        <!-- Form view for Customer Notes -->
+        <record id="customer_records_form_view" model="ir.ui.view">
+            <field name="name">customer.records.form.view</field>
+            <field name="model">customer.records</field>
+            <field name="arch" type="xml">
+                <form string="Customer Records">
+                    <sheet>
+                        <group>
+                            <!-- Field to display the customer name -->
+                            <field name="name" string="Customer Name"/>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <!-- Embedding the customer notes field with tree and form views -->
+                                <field name="notes">
+                                    <tree string="Customer Notes">
+                                        <!-- Fields to display in the tree view of notes -->
                                         <field name="title"/>
                                         <field name="note"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                                    </tree>
+                                    <form string="Customer Notes">
+                                        <group>
+                                            <!-- Fields to display in the form view of notes -->
+                                            <field name="title"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Tree view for Customer Records -->
-    <record id="customer_records_tree_view" model="ir.ui.view">
-        <field name="name">customer.records.tree.view</field>
-        <field name="model">customer.records</field>
-        <field name="arch" type="xml">
-            <tree string="Customer Records">
-                <!-- Field to display in the tree view -->
-                <field name="name" string="Customer Name"/>
-            </tree>
-        </field>
-    </record>
+        <!-- Tree view for Customer Records -->
+        <record id="customer_records_tree_view" model="ir.ui.view">
+            <field name="name">customer.records.tree.view</field>
+            <field name="model">customer.records</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Records">
+                    <!-- Field to display in the tree view -->
+                    <field name="name" string="Customer Name"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Form view for Customer Notes -->
-    <record id="customer_notes_form_view" model="ir.ui.view">
-        <field name="name">customer.notes.view.form</field>
-        <field name="model">customer.notes</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <!-- Fields to display in the form view of customer notes -->
-                        <field name="title" string="Title"/>
-                        <field name="note" string="Note"/>
-                        <field name="customer_id" string="Customer"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
 
-    <!-- Action for Customer Records -->
-    <record id="customer_records_action" model="ir.actions.act_window">
-        <field name="name">Customer Records</field>
-        <field name="res_model">customer.records</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+        <!-- Form view for Customer Notes -->
+        <record id="customer_notes_form_view" model="ir.ui.view">
+            <field name="name">customer.notes.view.form</field>
+            <field name="model">customer.notes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!-- Fields to display in the form view of customer notes -->
+                            <field name="title" string="Title"/>
+                            <field name="note" string="Note"/>
+                            <field name="customer_id" string="Customer"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Action for Customer Notes -->
-    <record id="customer_notes_action" model="ir.actions.act_window">
-        <field name="name">Customer Notes</field>
-        <field name="res_model">customer.notes</field>
-        <field name="view_mode">form</field>
-    </record>
+        <!-- Kanban view for Customer Notes -->
+        <record id="customer_notes_kanban_view" model="ir.ui.view">
+            <field name="name">customer.notes.kanban.view</field>
+            <field name="model">customer.notes</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="title"/>
+                    <field name="note"/>
+                    <field name="customer_id"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_kanban_record" t-att-data-id="record.id">
+                                <div class="o_kanban_details">
+                                    <strong>
+                                        <field name="title"/>
+                                    </strong>
+                                    <div>
+                                        <span><field name="note"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action for Customer Records -->
+        <record id="customer_records_action" model="ir.actions.act_window">
+            <field name="name">Customer Records</field>
+            <field name="res_model">customer.records</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action for Customer Notes -->
+        <record id="customer_notes_action" model="ir.actions.act_window">
+            <field name="name">Customer Notes</field>
+            <field name="res_model">customer.notes</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+    </data>
 </odoo>

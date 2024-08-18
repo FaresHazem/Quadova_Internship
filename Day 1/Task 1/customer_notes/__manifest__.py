@@ -9,6 +9,7 @@
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         # VIEWS
+        #"views/customer_records_views.xml",
         "views/customer_notes_views.xml",
         # MENUS
         "views/customer_menu.xml",
