@@ -1,0 +1,5 @@
+<odoo>
+    <record id="customer_admin" model="res.groups">
+        <field name="name">Customer Manager</field>
+    </record>
+</odoo>

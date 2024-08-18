@@ -1,0 +1,20 @@
+<odoo>
+    <!-- Root level menu item -->
+    <menuitem id="root_level" name="Customer Notes"/>
+    <!-- This creates the root-level menu item in the top-level menu bar with the name "Customer Notes". -->
+
+    <!-- Second level menu item under the root level -->
+    <menuitem id="second_level" name="Customer" parent="root_level">
+        <!-- This creates a second-level menu item named "Customer" under the "Customer Notes" root menu. -->
+
+        <!-- Third level menu item linking to customer notes -->
+        <menuitem id="third_level1" name="Notes" action="customer_notes_action"/>
+        <!-- This creates a third-level menu item named "Notes" under the "Customer" menu.
+             It is linked to the customer notes via the action "customer_notes_action". -->
+
+        <!-- Third level menu item linking to customer records -->
+        <menuitem id="third_level2" name="Records" action="customer_records_action"/>
+        <!-- This creates a third-level menu item named "Records" under the "Customer" menu.
+             It is linked to the customer records via the action "customer_records_action". -->
+    </menuitem>
+</odoo>
