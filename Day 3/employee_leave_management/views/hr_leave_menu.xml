@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="hr_leave_root_menu" name="HR Leave"/>
+    <menuitem id="hr_leave_customer_menu" name="Leaves" parent="hr_leave_root_menu">
+        <menuitem id="hr_leave_notes_menu" name="Manage Leaves" action="hr_leave_action"/>
+    </menuitem>
+</odoo>

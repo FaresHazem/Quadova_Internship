@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record id="view_customer_notes_kanban" model="ir.ui.view">
+            <field name="name">customer.notes.kanban.view</field>
+            <field name="model">customer.notes</field>
+            <field name="arch" type="xml">
+                <kanban string="Customer Notes">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong><field name="title"/></strong>
+                                    <p><field name="note"/></p>
+                                    <div class="oe_kanban_footer">
+                                        <span><field name="customer_id" widget='many2one'/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="customer_notes_form_view" model="ir.ui.view">
+            <field name="name">customer.notes.form.view</field>
+            <field name="model">customer.notes</field>
+            <field name="arch" type="xml">
+                <form string="Customer Notes">
+                    <group>
+                        <field name="title" string="Title"/>
+                        <field name="note" string="Note"/>
+                        <field name="customer_id" string="Customer"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Customer Records -->
+        <record id="view_customer_notes_tree" model="ir.ui.view">
+            <field name="name">customer.notes.tree.view</field>
+            <field name="model">customer.notes</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Records" name="notes">
+                    <field name="title"/>
+                    <field name="note"/>
+                    <field name="customer_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Customer Notes -->
+        <record id="customer_notes_action" model="ir.actions.act_window">
+            <field name="name">Customer Notes</field>
+            <field name="res_model">customer.notes</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('customer_id', '=', uid)]</field>
+        </record>
+    </data>
+</odoo>
